@@ -5,7 +5,7 @@ This repository packages [Localsendy](https://github.com/ca-x/localsendy) as a L
 - Package ID: `community.lazycat.app.localsendy`
 - Single application instance with Linux host networking
 - Automatic LocalSend IPv4/IPv6 interface discovery
-- Received files stay inside the application data directory
+- Received files stay inside the LazyCat application documents directory; outgoing files are read through the file chooser without being copied into application data
 - LazyCat file chooser interception for browser uploads and downloads
 - Automatic image delivery, versioned GitHub Releases, and official/private store publication through `ca-x/lazycat-github-action@v1`
 
