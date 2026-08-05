@@ -27,13 +27,6 @@ params:
     default_value: "53317"
     optional: false
 
-  - id: web_port
-    type: string
-    name: Web Management Port
-    description: "Host port used by the Localsendy Web interface (1-65535)"
-    default_value: "52222"
-    optional: false
-
   - id: auto_accept
     type: bool
     name: Auto Accept
@@ -55,9 +48,6 @@ locales:
     localsend_port:
       name: LocalSend 端口
       description: LocalSend 发现和文件传输使用的 TCP/UDP 端口
-    web_port:
-      name: Web 管理端口
-      description: Localsendy 网页界面使用的宿主机端口（1-65535）
     auto_accept:
       name: 自动接受
       description: 无需在网页中确认即可接受传入文件
