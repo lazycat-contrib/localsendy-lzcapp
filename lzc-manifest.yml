@@ -4,7 +4,7 @@ application:
   background_task: true
   upstreams:
     - location: /
-      backend: http://host.lzcapp:18080/
+      backend: http://host.lzcapp:{{ .U.web_port }}/
   injects:
     - id: open-save-chooser
       on: browser
@@ -24,7 +24,7 @@ services:
     user: "root"
     network_mode: host
     environment:
-      - LOCALSENDY_BIND=0.0.0.0:18080
+      - LOCALSENDY_BIND=0.0.0.0:{{ .U.web_port }}
       - LOCALSENDY_ALIAS_PREFIX={{ .U.device_name_prefix }}
       - LOCALSENDY_ALIAS_LOCALE=auto
       - LOCALSENDY_DEVICE_TYPE={{ .U.device_type }}
@@ -46,7 +46,7 @@ services:
         - --fail
         - --silent
         - --show-error
-        - http://127.0.0.1:18080/api/v1/health
+        - http://127.0.0.1:{{ .U.web_port }}/api/v1/health
       interval: 30s
       timeout: 5s
       retries: 3
