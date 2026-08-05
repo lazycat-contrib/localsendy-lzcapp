@@ -9,6 +9,7 @@ min_os_version: 1.5.0
 permissions:
   required:
     - net.host
+    - document.private
 locales:
   zh:
     name: Localsendy
