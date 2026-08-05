@@ -17,11 +17,10 @@ application:
             hooks:
               fileSystemAccess: true
               fileInput: true
-
 services:
   localsendy:
-    # upstream: docker.io/czyt/localsendy:0.1.0
-    image: docker.io/czyt/localsendy:0.1.0
+    # upstream: czyt/localsendy:0.1.0
+    image: registry.lazycat.cloud/czyt/czyt/localsendy:bfe5da5305edfa2c
     network_mode: host
     environment:
       - LOCALSENDY_BIND=0.0.0.0:18080
@@ -59,7 +58,6 @@ services:
       retries: 3
       start_period: 10s
     mem_limit: 512M
-
 usage: |
   Localsendy 使用宿主网络发现并连接局域网中的 LocalSend 设备。默认以 Server 类型和 LazyCat 品牌显示，设备名称使用 LazyCat 前缀加多语言随机名称。
   默认接收文件保存在应用数据目录；安装时启用“保存到用户文档”后，文件会写入所选用户的 Localsendy 私有文档目录。
