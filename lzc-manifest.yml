@@ -21,6 +21,7 @@ services:
   localsendy:
     # upstream: czyt/localsendy:0.1.0
     image: registry.lazycat.cloud/czyt/czyt/localsendy:bfe5da5305edfa2c
+    user: "root"
     network_mode: host
     environment:
       - LOCALSENDY_BIND=0.0.0.0:18080
