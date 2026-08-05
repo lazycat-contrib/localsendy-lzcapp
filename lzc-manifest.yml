@@ -38,7 +38,7 @@ services:
       - RUST_LOG=localsendy=info,tower_http=info
     binds:
       - /lzcapp/var/data:/data
-      - /lzcapp/documents:/documents
+      - /lzcapp/documents/${uid}:/documents
       - /lzcapp/cache/localsendy:/cache
     healthcheck:
       test:
