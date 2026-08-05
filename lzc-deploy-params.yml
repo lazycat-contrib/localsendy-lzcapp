@@ -1,0 +1,72 @@
+params:
+  - id: owner_uid
+    type: lzc_uid
+    name: Document Owner
+    description: LazyCat user who owns received files when document storage is enabled
+    optional: false
+
+  - id: save_to_documents
+    type: bool
+    name: Save to Documents
+    description: Save received files under the selected user's private Localsendy document directory instead of application data
+    default_value: "false"
+    optional: true
+
+  - id: device_name_prefix
+    type: string
+    name: Device Name Prefix
+    description: Prefix for the localized random LocalSend device name
+    default_value: LazyCat
+    optional: true
+
+  - id: device_type
+    type: string
+    name: Device Type
+    description: Standard LocalSend device type: mobile, desktop, web, headless, or server
+    default_value: server
+    optional: false
+
+  - id: device_model
+    type: string
+    name: Device Model
+    description: Device brand or model displayed to other LocalSend clients
+    default_value: LazyCat
+    optional: true
+
+  - id: localsend_port
+    type: string
+    name: LocalSend Port
+    description: TCP and UDP port used by LocalSend discovery and transfers
+    default_value: "53317"
+    optional: false
+
+  - id: auto_accept
+    type: bool
+    name: Auto Accept
+    description: Accept incoming transfers without confirmation in the Web interface
+    default_value: "false"
+    optional: true
+
+locales:
+  zh:
+    owner_uid:
+      name: 文档所属用户
+      description: 启用用户文档保存时，接收文件所属的懒猫用户
+    save_to_documents:
+      name: 保存到用户文档
+      description: 将接收文件保存到所选用户的 Localsendy 私有文档目录，而不是应用数据目录
+    device_name_prefix:
+      name: 设备名称前缀
+      description: 添加到多语言随机 LocalSend 设备名称前的前缀
+    device_type:
+      name: 设备类型
+      description: 标准 LocalSend 类型：mobile、desktop、web、headless 或 server
+    device_model:
+      name: 设备品牌
+      description: 在其他 LocalSend 客户端中显示的设备品牌或型号
+    localsend_port:
+      name: LocalSend 端口
+      description: LocalSend 发现和文件传输使用的 TCP/UDP 端口
+    auto_accept:
+      name: 自动接受
+      description: 无需在网页中确认即可接受传入文件

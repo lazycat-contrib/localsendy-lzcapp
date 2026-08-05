@@ -1,0 +1,19 @@
+package: community.lazycat.app.localsendy
+version: 0.1.0
+name: Localsendy
+description: A self-hosted LocalSend-compatible file transfer node for your local network.
+author: ca-x
+license: MIT
+homepage: https://github.com/ca-x/localsendy
+min_os_version: 1.5.0
+permissions:
+  required:
+    - net.host
+    - document.private
+locales:
+  zh:
+    name: Localsendy
+    description: 一款自托管、兼容 LocalSend 的局域网文件传输节点。
+  en:
+    name: Localsendy
+    description: A self-hosted LocalSend-compatible file transfer node for your local network.

@@ -1,0 +1,65 @@
+application:
+  subdomain: localsendy
+  multi_instance: false
+  background_task: true
+  upstreams:
+    - location: /
+      backend: http://host.lzcapp:18080/
+  injects:
+    - id: open-save-chooser
+      on: browser
+      when:
+        - "/*"
+      do:
+        - src: file:///lzcapp/pkg/content/lazycat-injects/lzc-file-chooser-inject.js
+          params:
+            locale: auto
+            hooks:
+              fileSystemAccess: true
+              fileInput: true
+
+services:
+  localsendy:
+    # upstream: docker.io/czyt/localsendy:0.1.0
+    image: docker.io/czyt/localsendy:0.1.0
+    network_mode: host
+    environment:
+      - LOCALSENDY_BIND=0.0.0.0:18080
+      - LOCALSENDY_ALIAS_PREFIX={{ .U.device_name_prefix }}
+      - LOCALSENDY_ALIAS_LOCALE=auto
+      - LOCALSENDY_DEVICE_TYPE={{ .U.device_type }}
+      - LOCALSENDY_DEVICE_MODEL={{ .U.device_model }}
+      - LOCALSENDY_PORT={{ .U.localsend_port }}
+      - LOCALSENDY_DATA_DIR=/data
+{{if .U.save_to_documents}}
+      - LOCALSENDY_DOWNLOAD_DIR=/documents/{{ .U.owner_uid }}/Localsendy
+{{else}}
+      - LOCALSENDY_DOWNLOAD_DIR=/data/downloads
+{{end}}
+      - LOCALSENDY_TEMP_DIR=/cache
+      - LOCALSENDY_AUTO_ACCEPT={{ .U.auto_accept }}
+      - LOCALSENDY_NETWORK_INTERFACES=all
+      - RUST_LOG=localsendy=info,tower_http=info
+    binds:
+      - /lzcapp/var/data:/data
+      - /lzcapp/cache/localsendy:/cache
+{{if .U.save_to_documents}}
+      - /lzcapp/documents:/documents
+{{end}}
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - --fail
+        - --silent
+        - --show-error
+        - http://127.0.0.1:18080/api/v1/health
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    mem_limit: 512M
+
+usage: |
+  Localsendy 使用宿主网络发现并连接局域网中的 LocalSend 设备。默认以 Server 类型和 LazyCat 品牌显示，设备名称使用 LazyCat 前缀加多语言随机名称。
+  默认接收文件保存在应用数据目录；安装时启用“保存到用户文档”后，文件会写入所选用户的 Localsendy 私有文档目录。
