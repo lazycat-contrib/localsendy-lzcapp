@@ -31,7 +31,7 @@ services:
       - LOCALSENDY_DEVICE_MODEL={{ .U.device_model }}
       - LOCALSENDY_PORT={{ .U.localsend_port }}
       - LOCALSENDY_DATA_DIR=/data
-      - LOCALSENDY_DOWNLOAD_DIR=/documents
+      - LOCALSENDY_DOWNLOAD_DIR=/documents/${LAZYCAT_APP_ID}
       - LOCALSENDY_TEMP_DIR=/cache
       - LOCALSENDY_AUTO_ACCEPT={{ .U.auto_accept }}
       - LOCALSENDY_NETWORK_INTERFACES=all
