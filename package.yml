@@ -1,5 +1,5 @@
 package: community.lazycat.app.localsendy
-version: 0.2.1
+version: 0.3.0
 name: Localsendy
 description: A self-hosted LocalSend-compatible file transfer node for your local network.
 author: ca-x
