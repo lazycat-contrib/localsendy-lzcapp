@@ -19,8 +19,8 @@ application:
               fileInput: true
 services:
   localsendy:
-    # upstream: czyt/localsendy:0.3.0
-    image: registry.lazycat.cloud/czyt/czyt/localsendy:0b663ca215d8324d
+    # upstream: czyt/localsendy:0.3.1
+    image: registry.lazycat.cloud/czyt/czyt/localsendy:ecf13067893973e0
     user: "root"
     network_mode: host
     environment:
