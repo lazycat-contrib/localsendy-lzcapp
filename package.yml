@@ -6,6 +6,7 @@ author: ca-x
 license: MIT
 homepage: https://github.com/ca-x/localsendy
 min_os_version: 1.5.0
+admin_only: true
 permissions:
   required:
     - net.host
